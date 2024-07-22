@@ -1,0 +1,54 @@
+<!-- Q.20Write to show
+i. Monday to Sunday using switch case in JS?
+ii. Vowel or Consonant using switch case in JS? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch case</title>
+</head>
+
+<body>
+    <script>
+        function getDayName(day) {
+            let dayName;
+            switch (day) {
+                case 1: dayName = 'Monday'; break;
+                case 2: dayName = 'Tuesday'; break;
+                case 3: dayName = 'Wednesday'; break;
+                case 4: dayName = 'Thursday'; break;
+                case 5: dayName = 'Friday'; break;
+                case 6: dayName = 'Saturday'; break;
+                case 7: dayName = 'Sunday'; break;
+                default: dayName = 'Invalid day'; break;
+            }
+            return dayName;
+        }
+        console.log(`getDayName(1)\ngetDayName(7)`)
+        console.log(getDayName(1)); // Monday
+        console.log(getDayName(7)); // Sunday
+
+
+        function isVowel(char) {
+            char = char.toLowerCase();
+            switch (char) {
+                case 'a':
+                case 'e':
+                case 'i':
+                case 'o':
+                case 'u':
+                    return 'Vowel';
+                default:
+                    return 'Consonant';
+            }
+        }
+        console.log(`isVowel('a'\nisVowel('b')`)
+        console.log(isVowel('a')); // Vowel
+        console.log(isVowel('b')); // Consonant
+
+    </script>
+</body>
+
+</html>

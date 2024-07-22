@@ -1,0 +1,22 @@
+<!-- Q.26Write a program make a summation of given number (E.g., 1523 Ans: - 11) in 
+JS? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>summation</title>
+</head>
+
+<body>
+    <script>
+        function sumDigits(num) {
+            return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
+        }
+        console.log("sumDigits(1523)\n"+sumDigits(1523)); // 11
+
+    </script>
+</body>
+
+</html>

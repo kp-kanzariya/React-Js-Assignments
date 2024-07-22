@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Operations</title>
+   <style>
+    body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#calculator {
+    border: 1px solid #ddd;
+    padding: 30px;
+    margin: 20px auto;
+    width: 400px;
+    text-align: center;
+}
+
+.input-fields {
+    margin-bottom: 10px;
+}
+
+.input-fields input {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+.data{
+    display: flex;
+
+}
+.inp{
+    padding: 5px 33px 20px 3px;
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.buttons button {
+    padding: 7px 12px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+#answer {
+    font-weight: bold;
+}
+
+#answer-text {
+    color: red;
+}
+
+   </style>
+</head>
+<body>
+    <h1>Maths Operations</h1>
+
+    <div id="calculator">
+        <div class="data">
+        <div class="inp">
+            Enter 1st Number: <br> <br> <br>
+            Enter 2nd Number: <br> <br><br>
+            <div class="buttons">
+                <button onclick="add()">+</button>
+                <button onclick="subtract()">-</button> 
+                <button onclick="multiply()">*</button>   
+                <button onclick="divide()">/</button>
+                <button onclick="percent()">%</button>
+            </div>
+        </div>
+        <div class="input-fields">
+            <input type="number" id="num1" placeholder="Enter 1st number">
+            <input type="number" id="num2" placeholder="Enter 2nd number">  <br> <br>
+
+           <b> Answer is:</b> <span id="answer-text"></span>
+        </div>
+        
+    </div>
+        
+        
+            
+        
+    </div>
+
+    <script >function add() {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const answer = num1 + num2;
+        document.getElementById('answer-text').textContent = answer;
+      }
+      
+      function subtract() {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const answer = num1 - num2;
+        document.getElementById('answer-text').textContent = answer;
+      }
+      
+      function multiply() {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const answer = num1 * num2;
+        document.getElementById('answer-text').textContent = answer;
+      }
+      
+      function divide() {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        if (num2 === 0) {
+            document.getElementById('answer-text').textContent = "Error: Cannot divide by zero";
+            return;
+        }
+        const answer = num1 / num2;
+        document.getElementById('answer-text').textContent = answer;
+      }
+      
+      function percent() {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const answer = (num1 / 100) * num2;
+        document.getElementById('answer-text').textContent = answer;
+      }
+      </script>
+</body>
+</html>

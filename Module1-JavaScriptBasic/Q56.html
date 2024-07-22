@@ -1,0 +1,174 @@
+<!-- Q.56 Dynamic Form Validation in JS? -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Form Validation</title>
+    <style>
+        .error { color: red; }
+        .valid { color: green; }
+        .invalid { border-color: red; }
+        .valid { border-color: green; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 25em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="signUpForm">
+            <h2>Sign Up</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <span class="error" id="usernameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="error" id="passwordError"></span>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <span class="error" id="confirmPasswordError"></span>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('username').addEventListener('input', validateUsername);
+        document.getElementById('email').addEventListener('input', validateEmail);
+        document.getElementById('password').addEventListener('input', validatePassword);
+        document.getElementById('confirmPassword').addEventListener('input', validateConfirmPassword);
+
+        function validateUsername() {
+            const usernameField = document.getElementById('username');
+            const usernameError = document.getElementById('usernameError');
+            const username = usernameField.value;
+
+            if (username.length < 3 || username.length > 25) {
+                usernameError.textContent = 'Username must be between 3 and 25 characters.';
+                usernameField.classList.add('invalid');
+                usernameField.classList.remove('valid');
+            } else {
+                usernameError.textContent = '';
+                usernameField.classList.add('valid');
+                usernameField.classList.remove('invalid');
+            }
+        }
+
+        function validateEmail() {
+            const emailField = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const email = emailField.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                emailError.textContent = 'Invalid email format.';
+                emailField.classList.add('invalid');
+                emailField.classList.remove('valid');
+            } else {
+                emailError.textContent = '';
+                emailField.classList.add('valid');
+                emailField.classList.remove('invalid');
+            }
+        }
+
+        function validatePassword() {
+            const passwordField = document.getElementById('password');
+            const passwordError = document.getElementById('passwordError');
+            const password = passwordField.value;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+
+            if (!passwordRegex.test(password)) {
+                passwordError.textContent = 'Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character (!@#$%^&*).';
+                passwordField.classList.add('invalid');
+                passwordField.classList.remove('valid');
+            } else {
+                passwordError.textContent = '';
+                passwordField.classList.add('valid');
+                passwordField.classList.remove('invalid');
+            }
+
+            validateConfirmPassword(); // Revalidate confirm password if password changes
+        }
+
+        function validateConfirmPassword() {
+            const confirmPasswordField = document.getElementById('confirmPassword');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const confirmPassword = confirmPasswordField.value;
+            const password = document.getElementById('password').value;
+
+            if (confirmPassword !== password) {
+                confirmPasswordError.textContent = 'Passwords do not match.';
+                confirmPasswordField.classList.add('invalid');
+                confirmPasswordField.classList.remove('valid');
+            } else {
+                confirmPasswordError.textContent = '';
+                confirmPasswordField.classList.add('valid');
+                confirmPasswordField.classList.remove('invalid');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Slider</title>
+<style>
+    body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.slider-container {
+    position: relative;
+    width: 85vw;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
+.slide {
+    width: calc(38vh / 1.1);
+    height: calc(38vh / 1.1);
+    margin: 0 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+}
+
+.middle {
+    transform: scale(1.2);
+}
+
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    z-index: 1;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+</style>
+</head>
+<body>
+    <div class="slider-container">
+        <button class="slide-btn" id="prevBtn">&lt;</button>
+        <div class="slider" id="slider">
+            <div class="slide" style="background-color: #ff6666;"></div>
+            <div class="slide" style="background-color: #ff9966;"></div>
+            <div class="slide middle" style="background-color: #ffcc66;"></div>
+            <div class="slide " style="background-color: #99ff66;"></div>
+            <div class="slide" style="background-color: #66ff99;"></div>
+            <div class="slide" style="background-color: #66ccff;"></div>
+            <div class="slide" style="background-color: #9966ff;"></div>
+            <div class="slide " style="background-color: #99ff66;"></div>
+            <div class="slide" style="background-color: #66ff99;"></div>
+            <div class="slide" style="background-color: #66ccff;"></div>
+            <div class="slide" style="background-color: #9966ff;"></div>
+        </div>
+        <button class="slide-btn" id="nextBtn">&gt;</button>
+    </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+const slides = document.querySelectorAll('.slide');
+let currentIndex = 0;
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+    }
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    if (currentIndex < slides.length - 2) { //6 last will not move
+        currentIndex++;
+        updateSlider();
+    }
+});
+
+function updateSlider() {
+    slider.style.transform = `translateX(-${(currentIndex) * (45 / 1.1 + 1)}vh)`;
+    slides.forEach((slide, index) => {
+        slide.classList.remove('middle');
+        if (index === currentIndex + 2) {
+            slide.classList.add('middle');
+        }
+    });
+
+
+}
+updateSlider();
+
+
+    </script>
+</body>
+</html>

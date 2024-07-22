@@ -1,0 +1,24 @@
+<!-- Q.18Write to find minimum number among 3 numbers using ternary operator in 
+JS? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternary operator</title>
+</head>
+
+<body>
+    <script>
+        function findMin(a, b, c) {
+            return a < b && a < c ? a : b < c ? b : c;
+        }
+        console.log(`findMin(10, 20, 5)\nfindMin(3, 7, 1)`)
+        console.log(findMin(10, 20, 5)); // 5
+        console.log(findMin(3, 7, 1)); // 1
+
+    </script>
+</body>
+
+</html>

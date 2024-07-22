@@ -1,0 +1,26 @@
+<!-- Q.2Check if typeof '10' is exactly equal to 10. If not make it exactly equal? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typeOf</title>
+</head>
+
+<body>
+    <script>
+        let strNum = '10';
+        let num = 10;
+
+        if (typeof strNum !== typeof num) {
+            console.log(`Value of strNum => ${strNum}\nValue of num => ${num}`)
+            strNum = Number(strNum); //String converted to Number
+            
+        }
+        console.log(typeof strNum === typeof num); // true
+
+    </script>
+</body>
+
+</html>

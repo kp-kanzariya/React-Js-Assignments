@@ -1,0 +1,47 @@
+<!-- Q.54 Form Validtion in JS? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+</head>
+
+<body>
+    <pre>
+    Form validation in JavaScript is the process of ensuring that the data entered by a user into a web form meetscertain criteria before it is submitted to the server. This can involve checking for the presence of required fields, ensuring that the entered data is of the correct format, and validating specific types of input such as email addresses, phone numbers, and passwords.
+
+    There are two types of form validation: 
+    client-side and server-side. 
+    Client-side validation is done using JavaScript on the user's browser, providing immediate feedback to the user. Server-side validation is performed on the server after the form data has been submitted.
+    
+    Types of Form Validation
+
+    Required Field Validation: Ensures that certain fields are not left empty.
+    Format Validation: Checks if the entered data matches a specified format (e.g., email addresses, phone numbers).
+    Length Validation: Ensures that the input data is within a specified length range.
+    Range Validation: Ensures that numerical inputs are within a specified range.
+    Comparison Validation: Ensures that two fields have matching values (e.g., password and confirm password).
+</pre>
+    <form id="myForm" onsubmit="return validateForm()">
+        Name: <input type="text" id="name">
+        Email: <input type="text" id="email">
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            if (name == "" || email == "") {
+                alert("Name and email must be filled out");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>

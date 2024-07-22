@@ -1,0 +1,107 @@
+<!-- Q.60 Array vs object defences in JS? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Vs Object</title>
+</head>
+
+<body>
+    <pre>
+
+    Arrays
+
+    Structure:
+    Arrays are ordered collections of data, indexed by numbers starting from 0.
+    Each element in an array can be accessed using its numeric index.
+
+    Use Cases:
+    Arrays are typically used to store lists of items, especially when the order of items is important.
+    Common examples include lists of numbers, strings, or objects.
+
+    Syntax:
+    Arrays are created using square brackets [].
+
+    Properties and Methods:
+    Arrays have built-in methods for manipulating their elements, such as push(), pop(), shift(), unshift(), splice(),
+    slice(), forEach(), map(), filter(), reduce(), etc.
+    The length of an array can be accessed using the length property.
+
+    Example:
+
+    let fruits = ['apple', 'banana', 'cherry'];
+    console.log(fruits[0]); // Output: apple
+    fruits.push('date'); // Adds 'date' to the end of the array
+    console.log(fruits); // Output: ['apple', 'banana', 'cherry', 'date']
+
+    Objects
+
+    Structure:
+    Objects are collections of key-value pairs, where keys are strings (or symbols) and values can be any data type.
+    Each value in an object is accessed using its associated key.
+
+    Use Cases:
+    Objects are typically used to represent more complex entities with properties and methods.
+    Common examples include storing related data and methods for a single entity (like a user, product, or configuration
+    settings).
+
+    Syntax:
+    Objects are created using curly braces {}.
+
+    Properties and Methods:
+    Object properties can be added, modified, or deleted using either dot notation or bracket notation.
+    Objects do not have built-in methods for iteration, but they can be iterated using for...in loops or methods from
+    Object like Object.keys(), Object.values(), and Object.entries().
+
+    Example:
+
+    let person = {
+    name: 'Alice',
+    age: 30,
+    greet: function() {
+    console.log('Hello, ' + this.name);
+    }
+    };
+    console.log(person.name); // Output: Alice
+    person.age = 31; // Modify the age property
+    person.greet(); // Output: Hello, Alice
+
+    Key Differences
+
+    Indexing vs. Key-Value Pair:
+    Arrays use numeric indexing (array[0], array[1], etc.).
+    Objects use named keys (object.key, object['key']).
+
+    Order:
+    Arrays maintain the order of elements.
+    Objects do not guarantee the order of properties, although in practice, most JavaScript engines iterate properties
+    in the order they were added (with some exceptions for numeric keys).
+
+    Iteration:
+    Arrays can be iterated using loops (for, for...of, forEach, etc.).
+    Objects are typically iterated using for...in loops or Object methods (Object.keys(), Object.values(),
+    Object.entries()).
+
+    Length Property:
+    Arrays have a length property that gives the number of elements.
+    Objects do not have a length property, but the number of properties can be determined using Object.keys(obj).length.
+
+    Methods and Functionality:
+    Arrays come with a wide range of built-in methods for manipulating the list of items.
+    Objects do not have such built-in methods, but can hold functions as properties (methods).
+
+    When to Use Each
+
+    Use Arrays:
+    When you need an ordered list of items.
+    When you need to frequently add, remove, or access items by their position.
+
+    Use Objects:
+    When you need to represent a collection of key-value pairs.
+    When you need to describe an entity with multiple properties and behaviors.
+</pre>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!-- Q.30 Accept 3 numbers from user using while loop and check each numbers 
+palindrome -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>palindrome</title>
+</head>
+
+<body>
+    <script>
+        function isPalindrome(num) {
+            let str = num.toString();
+            return str === str.split('').reverse().join('');
+        }
+
+        let i = 0;
+        while (i < 3) {
+            let num = parseInt(prompt('Enter a number:'), 10);
+            if (isPalindrome(num)) {
+                console.log(num + ' is a palindrome');
+            } else {
+                console.log(num + ' is not a palindrome');
+            }
+            i++;
+        }
+
+    </script>
+</body>
+
+</html>

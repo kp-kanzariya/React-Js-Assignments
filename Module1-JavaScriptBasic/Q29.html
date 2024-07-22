@@ -1,0 +1,92 @@
+<!-- Q.29Use pattern in console.log in JS?
+1) 1
+1 0
+1 0 1
+1 0 1 0
+1 0 1 0 1
+2) A
+B C D 
+E F
+G H I J
+K L M N O
+3) 1
+2 3
+4 5 6
+7 8 9 10
+11 12 13 14 15
+4) *
+* *
+* * *
+* * * *
+* * * * * -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pattern in js</title>
+</head>
+
+<body>
+    <script>
+        function pattern1() {
+            for (let i = 1; i <= 5; i++) {
+                let row = '';
+                for (let j = 1; j <= i; j++) {
+                    row += (j % 2 === 0 ? '0 ' : '1 ');
+                }
+                console.log(row.trim());
+            }
+        }
+
+        pattern1();
+
+        function pattern2() {
+            let alphabet = 'A';
+            for (let i = 1; i <= 5; i++) {
+                let row = '';
+                for (let j = 1; j <= i; j++) {
+                    row += alphabet + ' ';
+                    alphabet = String.fromCharCode(alphabet.charCodeAt(0) + 1);
+                }
+                console.log(row.trim());
+            }
+        }
+
+        pattern2();
+
+        function pattern3() {
+            let number = 1;
+            for (let i = 1; i <= 5; i++) {
+                let row = '';
+                for (let j = 1; j <= i; j++) {
+                    row += number + ' ';
+                    number++;
+                }
+                console.log(row.trim());
+            }
+        }
+
+        pattern3();
+
+
+        function pattern4() {
+            for (let i = 1; i <= 5; i++) {
+                let row = '';
+                for (let j = 1; j <= i; j++) {
+                    row += '* ';
+                }
+                console.log(row.trim());
+            }
+        }
+
+        pattern4();
+
+
+
+
+    </script>
+</body>
+
+</html>

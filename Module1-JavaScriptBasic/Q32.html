@@ -1,0 +1,26 @@
+<!-- Q.32Write a JavaScript program to get the current date? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>current date</title>
+</head>
+
+<body>
+    <script>
+        function getCurrentDate() {
+            let now = new Date();
+            let day = String(now.getDate()).padStart(2, '0'); //padStart(length,string)
+            let month = String(now.getMonth() + 1).padStart(2, '0'); // January is 0!
+            let year = now.getFullYear();
+            return `${month}-${day}-${year}`;
+        }
+
+        console.log(getCurrentDate()); // mm-dd-yyyy
+
+    </script>
+</body>
+
+</html>

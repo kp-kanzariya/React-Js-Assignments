@@ -1,0 +1,28 @@
+<!-- Q.34Write a JavaScript program to convert an array of objects into CSV string? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array of objects into CSV string</title>
+</head>
+
+<body>
+    <script>
+        function arrayToCSV(array) {
+            let csv = array.map(row => Object.values(row).join(',')).join('\n');
+            return csv;
+        }
+
+        let arrayOfObjects = [
+            { name: "John", age: 25 },
+            { name: "Pete", age: 30 },
+            { name: "Mary", age: 28 }
+        ];
+        console.log(arrayToCSV(arrayOfObjects)); //comma separated value
+
+    </script>
+</body>
+
+</html>

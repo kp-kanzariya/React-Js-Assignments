@@ -1,0 +1,82 @@
+<!-- Q.59 What is Bom vs Dom in JS? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM vs DOM</title>
+</head>
+
+<body>
+<pre>
+    DOM (Document Object Model)
+
+    The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of an HTML
+    or XML document as a tree of objects. Each node in the tree corresponds to a part of the document (e.g., elements,
+    attributes, text content).
+    Key Features of DOM
+
+    Tree Structure: The document is represented as a hierarchical tree where each node is an object.
+    Standardized by W3C: The DOM is a standard defined by the World Wide Web Consortium (W3C), ensuring consistency
+    across different browsers.
+    Manipulation: JavaScript can interact with and manipulate the DOM to change the structure, style, and content of the
+    document dynamically.
+
+    Common DOM Methods and Properties
+
+    Selecting Elements:
+    document.getElementById(id): Selects an element by its ID.
+    document.getElementsByClassName(className): Selects elements by their class name.
+    document.getElementsByTagName(tagName): Selects elements by their tag name.
+    document.querySelector(selector): Selects the first element that matches a CSS selector.
+    document.querySelectorAll(selector): Selects all elements that match a CSS selector.
+
+    Manipulating Elements:
+    element.innerHTML: Gets or sets the HTML content of an element.
+    element.textContent: Gets or sets the text content of an element.
+    element.setAttribute(attr, value): Sets an attribute on an element.
+    element.classList.add(className): Adds a class to an element.
+    element.classList.remove(className): Removes a class from an element.
+    element.appendChild(node): Adds a new child node to an element.
+
+    BOM (Browser Object Model)
+
+    The Browser Object Model (BOM) is a collection of objects provided by the browser that allow interaction with the
+    browser window and its components. Unlike the DOM, the BOM is not standardized and can vary between different
+    browsers.
+    Key Features of BOM
+
+    Window Object: The window object is the top-level object in the BOM. It represents the browser window or tab and
+    provides methods and properties to interact with the browser.
+    Browser Control: BOM allows for control and interaction with browser features like navigation, display, and history.
+    Non-Standardized: Since the BOM is not standardized, its implementation may vary across different browsers.
+
+    Common BOM Methods and Properties
+
+    Window Object:
+    window.open(url, target): Opens a new browser window or tab.
+    window.close(): Closes the current window.
+    window.alert(message): Displays an alert dialog with a message.
+    window.confirm(message): Displays a confirmation dialog with a message.
+    window.prompt(message, default): Displays a prompt dialog to take input from the user.
+
+    Navigator Object:
+    navigator.userAgent: Returns the user-agent string for the browser.
+    navigator.language: Returns the language of the browser.
+
+    Location Object:
+    location.href: Gets or sets the URL of the current page.
+    location.reload(): Reloads the current page.
+    location.assign(url): Loads a new document.
+
+    History Object:
+    history.back(): Loads the previous URL in the history list.
+    history.forward(): Loads the next URL in the history list.
+    history.go(delta): Loads a specific URL from the history list.
+
+
+</pre>
+</body>
+
+</html>

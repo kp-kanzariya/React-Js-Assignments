@@ -1,0 +1,23 @@
+<!-- Q.25Write to print number in reverse order e.g.: number = 64728 --- reverse 
+=82746 in JS? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reverse</title>
+</head>
+
+<body>
+    <script>
+        function reverseNumber(num) {
+            return parseInt(num.toString().split('').reverse().join(''), 10);
+        }
+        console.log("reverseNumber(64728)")
+        console.log(reverseNumber(64728)); // 82746
+
+    </script>
+</body>
+
+</html>

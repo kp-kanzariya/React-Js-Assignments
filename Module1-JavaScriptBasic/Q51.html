@@ -1,0 +1,35 @@
+<!-- Q.51 Write a JavaScript program to get the current date. Expected Output : 
+mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy? -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>current date</title>
+</head>
+
+<body>
+    <script>
+        function formatDate(date) {
+            let dd = String(date.getDate()).padStart(2, '0');
+            let mm = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+            let yyyy = date.getFullYear();
+
+            return {
+                'mm-dd-yyyy': `${mm}-${dd}-${yyyy}`,
+                'mm/dd/yyyy': `${mm}/${dd}/${yyyy}`,
+                'dd-mm-yyyy': `${dd}-${mm}-${yyyy}`,
+                'dd/mm/yyyy': `${dd}/${mm}/${yyyy}`
+            };
+        }
+
+        let date = new Date();
+        let formattedDates = formatDate(date);
+        console.log(formattedDates);
+
+    </script>
+</body>
+
+</html>

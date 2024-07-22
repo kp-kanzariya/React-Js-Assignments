@@ -1,0 +1,33 @@
+<!-- Q.28Use console.log() and escape characters to print the following pattern in JS?
+1 1 1 1 1
+2 1 2 4 8
+3 1 3 9 27
+4 1 4 16 64
+5 1 5 25 125 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pattern in JS</title>
+</head>
+
+<body>
+    <script>
+        function printPattern() {
+            for (let i = 1; i <= 5; i++) {
+                let row = '';
+                for (let j = 1; j <= 5; j++) {
+                    row += (j === 2) ? '1 ' : (j === 3) ? i + ' ' : (j === 4) ? (i * i) + ' ' : (j === 5) ? (i * i * i) + ' ' : i + ' ';
+                }
+                console.log(row.trim());
+            }
+        }
+        console.log("printPattern() 5*5")
+        printPattern();
+
+    </script>
+</body>
+
+</html>

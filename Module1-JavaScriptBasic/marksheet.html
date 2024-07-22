@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Technology Marksheet</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        
+        }
+        .container{
+            width: 600px;
+            /* background-color: blanchedalmond; */
+        }
+        table {
+            border-collapse: collapse;
+            width: 600px;
+            
+        }
+        .result button{
+            padding: 7px;
+            color: rgb(0, 0, 0);
+            font-weight: 600;
+
+        }
+
+        
+    
+        th,
+        td {
+            padding: 10px;
+            /* border: 1px solid #ddd; */
+            /* text-align: left; */
+        }
+
+        tfoot td {
+            font-weight: bold;
+        }
+
+        #total-marks,
+        #percentage {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body> 
+   <div class="container">
+    <table class="tbl">
+        <caption><h1>Information Technology Marksheet </h1></caption>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>C Language</td>
+                <td><input type="number"  id="c-marks"></td>
+            </tr>
+            <tr>
+                <td>C++ Language</td>
+                <td><input id="cpp-marks" type="number"></td>
+            </tr>
+            <tr>
+                <td>Database</td>
+                <td><input id="db-marks" type="number"></td>
+            </tr>
+            <tr>
+                <td>HTML</td>
+                <td><input id="html-marks" type="number"></td>
+            </tr>
+            <tr>
+                <td>CSS</td>
+                <td><input id="css-marks" type="number"></td>
+            </tr>
+            <tr>
+                <td>PHP</td>
+                <td><input id="php-marks" type="number"></td>
+            </tr>
+            <tr>
+                <td>Core Java</td>
+                <td><input id="java-marks" type="number"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="result"><button onclick="test()">Result</button></td>
+            </tr>
+           <tr>
+                <th>Total => <span id="total-marks"></span></th>
+               
+           
+                <th >Percentage => <span id="percentage"></span></th>   
+            
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <script>
+        const totalMarks = document.getElementById('total-marks');
+        const percentage = document.getElementById('percentage');
+       let cm=document.getElementById('c-marks').value
+       let cppm= parseFloat(document.getElementById('cpp-marks').value)
+        let dbm=parseFloat(document.getElementById('db-marks').value)
+        let htmlm=parseFloat(document.getElementById('html-marks').value)
+        let cssm=parseFloat(document.getElementById('css-marks').value)
+        let phpm= parseFloat(document.getElementById('php-marks').value)
+        let javam=parseFloat(document.getElementById('java-marks').value)
+        const marks = {
+            'c-marks': parseFloat(cm),
+            'cpp-marks':parseFloat(cppm),
+            'db-marks': parseFloat(dbm),
+            'html-marks':parseFloat(htmlm) ,
+            'css-marks':parseFloat(cssm) ,
+            'php-marks':parseFloat(phpm),
+            'java-marks':parseFloat(javam)
+        };
+
+        function test(){
+        let total = 0;
+        for ( mark in marks) {
+            total += marks[mark];
+          
+        }
+        
+        totalMarks.innerHTML= total;
+        percentage.innerHTML = ((total / 350) * 100).toFixed(2) + '%';
+    }
+    </script>
+</body>
+
+</html>
