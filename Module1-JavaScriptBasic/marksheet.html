@@ -61,38 +61,38 @@
         <tbody>
             <tr>
                 <td>C Language</td>
-                <td><input type="number"  id="c-marks"></td>
+                <td><input type="number"  id="cmarks"></td>
             </tr>
             <tr>
                 <td>C++ Language</td>
-                <td><input id="cpp-marks" type="number"></td>
+                <td><input id="cppmarks" type="number"></td>
             </tr>
             <tr>
                 <td>Database</td>
-                <td><input id="db-marks" type="number"></td>
+                <td><input id="dbmarks" type="number"></td>
             </tr>
             <tr>
                 <td>HTML</td>
-                <td><input id="html-marks" type="number"></td>
+                <td><input id="htmlmarks" type="number"></td>
             </tr>
             <tr>
                 <td>CSS</td>
-                <td><input id="css-marks" type="number"></td>
+                <td><input id="cssmarks" type="number"></td>
             </tr>
             <tr>
                 <td>PHP</td>
-                <td><input id="php-marks" type="number"></td>
+                <td><input id="phpmarks" type="number"></td>
             </tr>
             <tr>
                 <td>Core Java</td>
-                <td><input id="java-marks" type="number"></td>
+                <td><input id="javamarks" type="number"></td>
             </tr>
             <tr>
                 <td></td>
                 <td class="result"><button onclick="test()">Result</button></td>
             </tr>
            <tr>
-                <th>Total => <span id="total-marks"></span></th>
+                <th>Total => <span id="totalmarks"></span></th>
                
            
                 <th >Percentage => <span id="percentage"></span></th>   
@@ -102,32 +102,33 @@
     </table>
 </div>
     <script>
-        const totalMarks = document.getElementById('total-marks');
+        const totalMarks = document.getElementById('totalmarks');
         const percentage = document.getElementById('percentage');
-       let cm=document.getElementById('c-marks').value
-       let cppm= parseFloat(document.getElementById('cpp-marks').value)
-        let dbm=parseFloat(document.getElementById('db-marks').value)
-        let htmlm=parseFloat(document.getElementById('html-marks').value)
-        let cssm=parseFloat(document.getElementById('css-marks').value)
-        let phpm= parseFloat(document.getElementById('php-marks').value)
-        let javam=parseFloat(document.getElementById('java-marks').value)
+       let cm=document.getElementById('cmarks').value
+       let cppm= parseFloat(document.getElementById('cppmarks').value)
+        let dbm=parseFloat(document.getElementById('dbmarks').value)
+        let htmlm=parseFloat(document.getElementById('htmlmarks').value)
+        let cssm=parseFloat(document.getElementById('cssmarks').value)
+        let phpm= parseFloat(document.getElementById('phpmarks').value)
+        let javam=parseFloat(document.getElementById('javamarks').value)
+        
         const marks = {
-            'c-marks': parseFloat(cm),
-            'cpp-marks':parseFloat(cppm),
-            'db-marks': parseFloat(dbm),
-            'html-marks':parseFloat(htmlm) ,
-            'css-marks':parseFloat(cssm) ,
-            'php-marks':parseFloat(phpm),
-            'java-marks':parseFloat(javam)
+            'cmarks': parseFloat(cm),
+            'cppmarks':parseFloat(cppm),
+            'dbmarks': parseFloat(dbm),
+            'htmlmarks':parseFloat(htmlm) ,
+            'cssmarks':parseFloat(cssm) ,
+            'phpmarks':parseFloat(phpm),
+            'javamarks':parseFloat(javam)
         };
-
+        console.log(marks[cmarks])
         function test(){
         let total = 0;
         for ( mark in marks) {
             total += marks[mark];
+            console.log(total)
           
         }
-        
         totalMarks.innerHTML= total;
         percentage.innerHTML = ((total / 350) * 100).toFixed(2) + '%';
     }
