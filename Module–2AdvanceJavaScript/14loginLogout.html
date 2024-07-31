@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Logout Navigation</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #b1b1b1;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: aliceblue;
+            border: 1px solid black;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #4400ff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .page {
+            display: none;
+            margin: 10px 0;
+        }
+
+        .page h1 {
+            margin: 5px;
+        }
+
+        #home {
+            width: 200px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 10px;
+
+        }
+
+        #logoutLink {
+
+            background-color: rgb(255, 0, 0);
+            text-decoration: none;
+            padding: 7px;
+            color: white;
+            border-radius: 5px;
+            /* margin: 5px; */
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label,
+        form input {
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 7px;
+            background-color: #006e1b;
+            color: white;
+            border: none;
+            font-size: large;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #00c251;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" id="loginLink" onclick="navigate('login')">Login</a></li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <div id="home" class="page">
+                <h1>Welcome</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem numquam nisi possimus, .</p>
+                <a href="#" id="logoutLink" onclick="logout()" style="display: none;">Logout</a>
+
+            </div>
+            <div id="login" class="page">
+                <h1>Login Page</h1>
+                <form onsubmit="login(event)">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function navigate(page) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(page).classList.add('active');
+        }
+
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === 'password') {
+                sessionStorage.setItem('loggedIn', 'true');
+                alert('Login successful!');
+                document.getElementById('loginLink').style.display = 'none';
+                document.getElementById('logoutLink').style.display = 'inline';
+                navigate('home');
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('loggedIn');
+            document.getElementById('loginLink').style.display = 'inline';
+            document.getElementById('logoutLink').style.display = 'none';
+            navigate('login');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loggedIn = sessionStorage.getItem('loggedIn');
+            if (loggedIn) {
+                document.getElementById('loginLink').style.display = 'none';
+                document.getElementById('logoutLink').style.display = 'inline';
+                navigate('home');
+            } else {
+                navigate('login');
+            }
+        });
+
+    </script>
+</body>
+
+</html>

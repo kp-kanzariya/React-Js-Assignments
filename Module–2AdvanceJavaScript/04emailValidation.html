@@ -1,0 +1,120 @@
+<!-- Q.56 Dynamic Form Validation in JS? -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Email Validation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        .error {
+            color: red;
+        }
+
+        .valid {
+            color: green;
+            border-color: green;
+        }
+
+        .invalid {
+            border-color: red;
+        }
+
+        
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 25em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            outline: none;
+            border: none;
+            box-sizing: border-box;
+        }
+        .in-box{
+            display: flex;
+            justify-content: center ;
+            align-items: center;
+            border: 2px solid gray;
+        }
+        .fa-envelope{
+            font-size: 25px;
+            padding: 2px;
+            /* display: none; */
+        }
+        .fa-circle-check{
+           display: none;
+           font-size: 23px;
+           padding:2px;
+        }
+        
+     
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="signUpForm">
+          
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <div class="in-box">
+                <input type="email" id="email" name="email" required>
+                <i class="fa-regular fa-envelope" style="color: #ff4400;"></i>
+                <i class="fa-regular fa-circle-check" style="color: #14eb03;"></i>
+            </div>
+                <span class="error" id="emailError"></span>
+            </div>
+           
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('email').addEventListener('input', validateEmail);
+        i =document.querySelector(".fa-envelope")
+        i2 =document.querySelector(".fa-circle-check")
+    
+
+        function validateEmail() {
+            const emailField = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const email = emailField.value;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                emailError.textContent = 'Invalid email format.';
+                emailField.classList.add('invalid');
+                i2.style.display='none';
+                i.style.display='block';
+                emailField.classList.remove('valid');
+            } else {
+                emailError.textContent = '';
+                i.style.display='none'
+                i2.style.display='block'
+                emailField.classList.add('valid');
+                emailField.classList.remove('invalid');
+            }
+        }
+
+     
+
+    </script>
+</body>
+
+</html>

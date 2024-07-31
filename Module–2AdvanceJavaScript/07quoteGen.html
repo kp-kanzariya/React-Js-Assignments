@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote of the Day</title>
+    <style>
+        body {
+            
+            background-color: rgb(185, 255, 177);
+        }
+
+        .container {
+            background-color: white;
+            font-family: sans-serif;
+            text-align: center;
+            margin: 100px auto;
+            padding: 0 30px 30px 30px;
+            width: 400px;
+            border: 2px solid gray;
+            border-radius: 5px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        #nextQuote {
+            padding: 10px 20px;
+            background-color: #0c59ff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #nextQuote:hover {
+            background-color: #ffffff;
+            color: #001174;
+            border: 1px solid rgb(8, 0, 159);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quote of the Day</h1>
+        <!-- <p id="quote"></p> -->
+        <quote id="quote"></quote>
+        <hr>
+        <button id="nextQuote">Next Quote</button>
+    </div>
+    <script>
+        
+        const quotes = [
+            '"Never give up because you never know if the next try is going to be the one that works." <br> - Mary Kay Ash',
+            '"The difference between ordinary and extraordinary is that little extra."<br> - Jimmy Johnson',
+            '"The only way to do great work is to love what you do. If you haven\'t found it yet, keep looking. Don\'t settle." <br> - Steve Jobs'
+        ]; // Replace with your list of quotes
+        let currentQuoteIndex = 0;
+
+        const quoteText = document.getElementById('quote');
+        const nextQuoteBtn = document.getElementById('nextQuote');
+
+        nextQuoteBtn.addEventListener('click', () => {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; //for infinite
+            quoteText.innerHTML = quotes[currentQuoteIndex];
+        });
+
+        // Display the first quote on page load
+        quoteText.innerHTML = quotes[currentQuoteIndex];
+
+    </script>
+</body>
+
+</html>

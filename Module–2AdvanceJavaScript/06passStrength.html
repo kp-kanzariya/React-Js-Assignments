@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <style>
+
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: linear-gradient(to top right,
+          #29fc45 10%, rgb(88, 163, 255), #ff3fc2);
+      color: #0e0f0f;
+      font-size: 20px;
+    }
+
+    #top {
+      color: green;
+    }
+
+    .group {
+      width: auto;
+      text-align: center;
+      border: 2px solid gray;
+      border-radius: 10px;
+      padding: 5px 30px 30px 30px;
+      background-color: white;
+    }
+
+    .group label {
+      display: block;
+      padding: 20px 0;
+    }
+
+    .group input {
+      border: none;
+      outline: none;
+      padding: 20px;
+      width: calc(100% - 40px);
+      border-radius: 10px;
+      background-color: #eaeff2;
+      color: #000000;
+      font-size: 20px;
+    }
+
+    .group .Strength-container {
+      background-color: #2E424D;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+    }
+
+    .group .Strength-container #Strength-point {
+      background-color: #D73F40;
+      width: 2%;
+      height: 100%;
+      border-radius: 5px;
+      transition: 0.5s;
+    }
+    .St-container{
+      display: flex;
+      height: 100%;
+      width: 2%;
+      border-radius: 5px;
+      transition: 0.5s;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+    }
+    .St-point1{
+      border: 2px solid white;
+      display: none;
+      height: 100%;
+      background-color: #ff0000;
+      width: 33%;
+      border-radius: 5px;
+      transition: 0.5s;
+    }
+    .St-point2{
+      border: 2px solid white;
+      display: none;
+      height: 100%;
+      background-color: #ccff00;
+      width: 33%;
+      border-radius: 5px;
+      transition: 0.5s;
+    }
+    .St-point3{
+      display: none;
+      border: 2px solid white;
+      height: 100%;
+      background-color: hsl(119, 100%, 50%);
+      width: 33%;
+      border-radius: 5px;
+      transition: 0.5s;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="group">
+
+    <h1>Password Strength Checker</h1>
+
+    <input type="text" id="password" placeholder="Type your password Here ..." />
+    <label for="">
+      Strength of password
+    </label>
+    <div class="St-container">
+      <div class="St-point1"></div>
+      <div class="St-point2"></div>
+      <div class="St-point3"></div>
+    </div>
+    <span id="text">Strength</span>
+    <!-- <div class="Strength-container">
+      <div id="Strength-point"></div>
+    </div> -->
+  </div>
+  <script>
+
+
+    let password = document.getElementById("password");
+    let text = document.getElementById("text");
+    let stPoint1 = document.querySelector('.St-point1');
+    let stPoint2 = document.querySelector('.St-point2');
+    let stPoint3 = document.querySelector('.St-point3');
+    // let Strength = document.getElementById("Strength-point");
+    password.oninput = function () {
+      let point = 0;
+      let value = password.value;
+      console.log(value)
+      // let widthStrength = ["1%", "33%", "66%", "100%"];
+      // let colorStrength = ["#D73F40", "#DC6551", "yellow", "green"];
+
+      if (value.length >= 6) {
+        // let arrayTest = [/[0-9]/, /[a-z]/, /[A-Z]/, /[^0-9a-zA-Z]/];
+        let arrayTest = [/[0-9]/, /[a-z-A-Z]/, /[^0-9a-zA-Z]/];
+        arrayTest.forEach((item) => {
+          if (item.test(value)) {
+            point += 1;
+          }
+     
+        });
+      }
+      if(point== 1)
+      {
+       stPoint1.style.display='block'
+       stPoint2.style.display='none' 
+       stPoint3.style.display='none'
+       text.innerHTML='Low Strength'
+        
+      }
+      if(point== 2)
+      {
+       stPoint1.style.display='block' 
+       stPoint2.style.display='block'
+       stPoint3.style.display='none'
+       text.innerHTML='Average Strength'
+  
+      }
+      if(point== 3)
+      {
+       stPoint1.style.display='block' 
+       stPoint2.style.display='block' 
+       stPoint3.style.display='block'
+       text.innerHTML='Full Strength'
+    
+      }
+      // Strength.style.width = widthStrength[point];// increase width of color according to strength
+      // Strength.style.backgroundColor = colorStrength[point]; //change color according to strength
+    };
+
+  </script>
+</body>
+
+</html>

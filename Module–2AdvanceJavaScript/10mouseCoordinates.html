@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Mouse Coordinates</title>
+    <style>
+        body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+#hoverArea {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+#coordinates {
+    font-size: 18px;
+}
+
+    </style>
+</head>
+<body>
+    <!-- <div id="hoverArea">Hover over me!</div> -->
+    <div id="coordinates">X: 0, Y: 0</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+    // const hoverArea = document.getElementById('hoverArea');
+    const coordinates = document.getElementById('coordinates');
+
+    // hoverArea.addEventListener('mousemove', (e) => {
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        coordinates.innerHTML = `X: ${x}, Y: ${y}`;
+    });
+
+    // hoverArea.addEventListener('mouseleave', () => {
+    //     coordinates.textContent = 'X: 0, Y: 0';
+    // });
+});
+
+    </script>
+</body>
+</html>

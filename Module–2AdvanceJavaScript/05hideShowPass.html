@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Password Hide/Show </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .container {
+            padding: 10px;
+            width: 500px;
+
+            border: 2px solid gray;
+            border-radius: 5px;
+            height: 170px;
+            background-color: rgb(237, 255, 172);
+        }
+
+        .input-group {
+            width: 241px;
+            margin: 30px 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+        
+
+        .input-group input{
+            border: none;
+            padding: 5px;
+            margin: 2px;
+            outline: none;
+            /* background-color: aquamarine; */
+        }
+        .fa-lock{
+            color: white;
+            background-color: rgb(0, 60, 255);
+            padding: 8px 10.5px;
+           border-right: 1px solid black;
+            border-radius: 3px 0 0 3px;
+        }
+        .fa-eye,.fa-eye-slash{
+            background-color: rgb(255, 255, 255);
+            padding: 8px;
+         color:rgb(0, 60, 255);
+            border-radius: 5px;
+        }
+
+    </style>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="container ">
+        <h1>PASSWORD SHOW-HIDE</h1>
+        <hr>
+        <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+            <i class="fa-solid fa-eye"></i>
+
+        </div>
+
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        let i1 =document.querySelector('.fa-eye')
+
+        i1.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            // console.log(type);
+            i1.classList.toggle('fa-eye');
+            i1.classList.toggle('fa-eye-slash');
+        });
+
+    </script>
+</body>
+
+</html>

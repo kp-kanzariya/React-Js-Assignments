@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing Example</title>
+    <style>
+        body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 400px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+span {
+    display: block;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Debounce Input</h1>
+        <input type="text" id="debounceInput" placeholder="Type something...">
+        <span id="debouncedResult"></span>
+    </div>
+
+ <script>
+    // Debounce function
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+// Function to update the span with the input value
+function updateDebouncedResult() {
+    const input = document.getElementById('debounceInput').value;
+    const result = document.getElementById('debouncedResult');
+    result.innerHTML = 'You Typed  ::'+input;
+}
+
+// Add event listener to the input field with a debounced version of the update function
+const inputField = document.getElementById('debounceInput');
+const debouncedUpdate = debounce(updateDebouncedResult, 300); // 300ms delay
+inputField.addEventListener('input', debouncedUpdate);
+
+ </script>
+</body>
+</html>

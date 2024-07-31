@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage CRUD Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            box-sizing: border-box;
+        }
+        .item-list {
+            margin-top: 20px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .item button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>LocalStorage CRUD Operations</h2>
+        <input type="text" id="itemInput" placeholder="Enter item name">
+        <button onclick="addItem()">Add Item</button>
+        <div class="item-list" id="itemList"></div>
+    </div>
+
+    <script>
+        // Function to render the item list
+        function renderItems() {
+            const itemList = document.getElementById('itemList');
+            itemList.innerHTML = '';
+
+            const items = JSON.parse(localStorage.getItem('items')) || [];
+            items.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                itemDiv.innerHTML = `
+                    <span>${item}</span>
+                    <button onclick="editItem(${index})">Edit</button>
+                    <button onclick="deleteItem(${index})">Delete</button>
+                `;
+                itemList.appendChild(itemDiv);
+            });
+        }
+
+        // Function to add an item
+        function addItem() {
+            const itemInput = document.getElementById('itemInput');
+            const itemName = itemInput.value.trim();
+            if (itemName) {
+                const items = JSON.parse(localStorage.getItem('items')) || [];
+                items.push(itemName);
+                localStorage.setItem('items', JSON.stringify(items));
+                itemInput.value = '';
+                renderItems();
+            }
+        }
+
+        // Function to edit an item
+        function editItem(index) {
+            const items = JSON.parse(localStorage.getItem('items')) || [];
+            const newItemName = prompt('Edit item name:', items[index]);
+            if (newItemName !== null && newItemName.trim() !== '') {
+                items[index] = newItemName.trim();
+                localStorage.setItem('items', JSON.stringify(items));
+                renderItems();
+            }
+        }
+
+        // Function to delete an item
+        function deleteItem(index) {
+            const items = JSON.parse(localStorage.getItem('items')) || [];
+            items.splice(index, 1);
+            localStorage.setItem('items', JSON.stringify(items));
+            renderItems();
+        }
+
+        // Initial render
+        renderItems();
+    </script>
+</body>
+</html>

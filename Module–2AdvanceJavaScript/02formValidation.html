@@ -1,13 +1,25 @@
 <!-- Q.56 Dynamic Form Validation in JS? -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dynamic Form Validation</title>
     <style>
-        .error { color: red; }
-        .valid { color: green; }
-        .invalid { border-color: red; }
-        .valid { border-color: green; }
+        .error {
+            color: red;
+        }
+
+        .valid {
+            color: green;
+            border-color: green;
+        }
+
+        .invalid {
+            border-color: red;
+        }
+
+        
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -35,7 +47,7 @@
             margin-bottom: 15px;
         }
 
-        .form-group label {
+        .form-group label  {
             display: block;
             margin-bottom: 5px;
         }
@@ -45,11 +57,17 @@
             padding: 8px;
             box-sizing: border-box;
         }
+        .form-group select{
+            padding: 9px 285px 9px 9px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid rgb(151, 151, 151);
+        }
 
-        .error {
+        /* .error {
             color: red;
             font-size: 12px;
-        }
+        } */
 
         button {
             width: 100%;
@@ -67,6 +85,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
         <form id="signUpForm">
@@ -87,10 +106,21 @@
                 <span class="error" id="passwordError"></span>
             </div>
             <div class="form-group">
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-                <span class="error" id="confirmPasswordError"></span>
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+                <span class="error" id="birthdateError"></span>
             </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="error" id="genderError"></span>
+            </div>
+
             <button type="submit">Sign Up</button>
         </form>
     </div>
@@ -99,23 +129,24 @@
         document.getElementById('username').addEventListener('input', validateUsername);
         document.getElementById('email').addEventListener('input', validateEmail);
         document.getElementById('password').addEventListener('input', validatePassword);
-        document.getElementById('confirmPassword').addEventListener('input', validateConfirmPassword);
+        document.getElementById('birthdate').addEventListener('change', validateBirthdate);
+        document.getElementById('gender').addEventListener('change', validategender);
+        
+        function validateUsername() {
+            const usernameField = document.getElementById('username');
+            const usernameError = document.getElementById('usernameError');
+            const username = usernameField.value;
 
-            function validateUsername() {
-                const usernameField = document.getElementById('username');
-                const usernameError = document.getElementById('usernameError');
-                const username = usernameField.value;
-
-                if (username.length < 3 || username.length > 25) {
-                    usernameError.textContent = 'Username must be between 3 and 25 characters.';
-                    usernameField.classList.add('invalid');
-                    usernameField.classList.remove('valid');
-                } else {
-                    usernameError.textContent = '';
-                    usernameField.classList.add('valid');
-                    usernameField.classList.remove('invalid');
-                }
+            if (username.length < 3 || username.length > 25) {
+                usernameError.textContent = 'Username must be between 3 and 25 characters.';
+                usernameField.classList.add('invalid');
+                usernameField.classList.remove('valid');
+            } else {
+                usernameError.textContent = '';
+                usernameField.classList.add('valid');
+                usernameField.classList.remove('invalid');
             }
+        }
 
         function validateEmail() {
             const emailField = document.getElementById('email');
@@ -141,7 +172,7 @@
             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
 
             if (!passwordRegex.test(password)) {
-                passwordError.textContent = 'Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character (!@#$%^&*).';
+                passwordError.textContent = 'Password must be at least 8 characters long.';
                 passwordField.classList.add('invalid');
                 passwordField.classList.remove('valid');
             } else {
@@ -150,25 +181,43 @@
                 passwordField.classList.remove('invalid');
             }
 
-            validateConfirmPassword(); // Revalidate confirm password if password changes
         }
+        function validateBirthdate(){
+            const birthdateField = document.getElementById('birthdate');
+            const birthdateError = document.getElementById('birthdateError');
+            const birthdate = birthdateField.value;
+            // console.log(birthdateField,birthdateError,birthdate)
 
-        function validateConfirmPassword() {
-            const confirmPasswordField = document.getElementById('confirmPassword');
-            const confirmPasswordError = document.getElementById('confirmPasswordError');
-            const confirmPassword = confirmPasswordField.value;
-            const password = document.getElementById('password').value;
-
-            if (confirmPassword !== password) {
-                confirmPasswordError.textContent = 'Passwords do not match.';
-                confirmPasswordField.classList.add('invalid');
-                confirmPasswordField.classList.remove('valid');
+            if (!birthdate) {
+                birthdateError.textContent = 'Select Your Date of Birth';
+                birthdateField.className='invalid';
+                birthdateField.classList.remove('valid');
             } else {
-                confirmPasswordError.textContent = '';
-                confirmPasswordField.classList.add('valid');
-                confirmPasswordField.classList.remove('invalid');
+                birthdateError.textContent = '';
+                birthdateField.className='valid';
+                birthdateField.classList.remove('invalid');
             }
         }
+        function validategender(){
+            const genderField = document.getElementById('gender');
+            const genderError = document.getElementById('genderError');
+            const gender = genderField.value;
+            // console.log(genderField,genderError,gender)
+
+            if (!gender) {
+                
+                genderError.textContent = 'Select your Gender';
+                genderField.className='invalid';
+                genderField.classList.remove('valid');
+            } else {
+                genderError.textContent = '';
+                genderField.className='valid';
+                genderField.classList.remove('invalid');
+            }
+        }
+
+
     </script>
 </body>
+
 </html>

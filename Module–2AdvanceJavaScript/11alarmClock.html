@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 0 30px;
+            border: 2px solid gray;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #clock {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        input[type="time"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+            margin: 15px;
+            background-color: rgb(36, 0, 215);
+            color: white;
+            border-radius: 5px;
+        }
+
+        #alarmStatus {
+            margin: 10px;
+            font-size: 18px;
+            color: rgb(20, 203, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Alarm Clock</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Alarm_Clock_Animation_High_Res.png" alt="no Img" height="90px">
+        <div id="clock">00:00:00</div>
+        <div>
+            <label for="alarmTime">Set Time: </label>
+            <input type="time" id="alarmTime"> <br>
+            <button onclick="setAlarm()">Set Alarm</button>
+        </div>
+        <div id="alarmStatus"></div>
+    </div>
+
+    <script>
+        let alarmTime = null;
+        let alarmTimeout = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').innerHTML = timeString;
+
+            // Check if the current time matches the alarm time
+            if (timeString === alarmTime) {
+                alert('Alarm ringing!');
+                clearAlarm();
+            }
+        }
+
+        function setAlarm() {
+            const input = document.getElementById('alarmTime').value;
+            if (!input) {
+                alert('Please set a valid time for the alarm.');
+                return;
+            }
+
+            alarmTime = `${input}:00`; // Adding seconds part as 00
+            document.getElementById('alarmStatus').innerHTML = `Alarm set for:: ${alarmTime}`;
+        }
+
+        function clearAlarm() {
+            alarmTime = null;
+            document.getElementById('alarmStatus').innerHTML = '';
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export HTML Table to Excel</title>
+</head>
+<body>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Alice</td>
+                <td>25</td>
+                <td>New York</td>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>30</td>
+                <td>San Francisco</td>
+            </tr>
+            <tr>
+                <td>Charlie</td>
+                <td>35</td>
+                <td>Chicago</td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="exportTableToExcel('dataTable', 'data')">Export to Excel</button>
+
+   <script>
+    function exportTableToExcel(tableID, filename = '') {
+    let downloadLink;
+    const dataType = 'application/vnd.ms-excel';//MIME type for an Excel file
+    const tableSelect = document.getElementById(tableID);
+    const tableHTML = tableSelect.outerHTML.replace(/ /g, '%20'); //space replace to %20 Ensure URL encoding is correct when data embedded in link.
+    
+    filename = filename ? filename + '.xls' : 'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    document.body.appendChild(downloadLink);
+    
+    if (navigator.msSaveOrOpenBlob) {
+        navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        // Triggering the function
+        downloadLink.click();
+    }
+}
+
+   </script>
+</body>
+</html>
+<!-- For Internet Explorer 
+ const blob = new Blob(['\ufeff', tableHTML], {
+     type: dataType
+ });
+
+navigator.msSaveOrOpenBlob(blob, filename);: Uses the msSaveOrOpenBlob method to save the blob as a file with the specified filename in Internet Explorer.
+
+MIME- Multipurpose Internet Mail Extensions
+ Common MIME Types: other than ASCII
+
+     text/html: HTML documents
+     text/plain: Plain text
+     image/jpeg: JPEG images
+     image/png: PNG images
+     application/json: JSON data
+     application/pdf: PDF documents
+     application/vnd.ms-excel: Excel files
+     
+     
+-->
