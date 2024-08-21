@@ -1,0 +1,16 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 ;
+  padding: 0;
+  /* text-align: center; */
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    /* margin-bottom: 15px; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
