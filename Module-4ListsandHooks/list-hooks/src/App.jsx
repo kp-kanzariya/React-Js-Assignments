@@ -10,12 +10,12 @@ import TodoApp from "./assets/TodoApps";
 function App() {
   return (
     <>
-      <TodoApp/>
+      {/* <TodoApp/> */}
       {/* <Counter /> */}
       {/* <LoginLogout /> */}
       {/* <MovingDot/> */}
       {/* <ListView /> */}
-      {/* <LogReg/> */}
+      <LogReg/>
     </>
   );
 }
