@@ -1,0 +1,17 @@
+.card {
+  border-radius: 10px;
+}
+
+.bg-dark .card {
+  background-color: #343a40 !important;
+}
+
+.btn-light {
+  background-color: #f8f9fa;
+  border: none;
+}
+
+.btn-dark {
+  background-color: #212529;
+  border: none;
+}
