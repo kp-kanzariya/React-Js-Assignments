@@ -1,11 +1,11 @@
 # React-Js-Assignments
 
 Module 1-JavaScript Basic
-Q.1Using console.log() print out the following statement: The quote 'There is 
+<br>Q.1Using console.log() print out the following statement: The quote 'There is 
 no exercise better for the heart than reaching down and lifting people up.' by 
 John Holmes teaches us to help one another. Using console.log() print out the 
 following quote by Mother Teresa:
-Q.2Check if typeof '10' is exactly equal to 10. If not make it exactly equal?
+<br>Q.2Check if typeof '10' is exactly equal to 10. If not make it exactly equal?
 Q.3Write a JavaScript Program to find the area of a triangle?
 Q.4Write a JavaScript program to calculate days left until next Christmas?
 Q.5 What is Condition Statement?
