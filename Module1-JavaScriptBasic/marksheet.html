@@ -102,36 +102,22 @@
     </table>
 </div>
     <script>
+        function test(){
         const totalMarks = document.getElementById('totalmarks');
         const percentage = document.getElementById('percentage');
        let cm=document.getElementById('cmarks').value
-       let cppm= parseFloat(document.getElementById('cppmarks').value)
-        let dbm=parseFloat(document.getElementById('dbmarks').value)
-        let htmlm=parseFloat(document.getElementById('htmlmarks').value)
-        let cssm=parseFloat(document.getElementById('cssmarks').value)
-        let phpm= parseFloat(document.getElementById('phpmarks').value)
-        let javam=parseFloat(document.getElementById('javamarks').value)
+       let cppm= document.getElementById('cppmarks').value
+        let dbm=document.getElementById('dbmarks').value
+        let htmlm=document.getElementById('htmlmarks').value
+        let cssm=document.getElementById('cssmarks').value
+        let phpm= document.getElementById('phpmarks').value
+        let javam=document.getElementById('javamarks').value
         
-        const marks = {
-            'cmarks': parseFloat(cm),
-            'cppmarks':parseFloat(cppm),
-            'dbmarks': parseFloat(dbm),
-            'htmlmarks':parseFloat(htmlm) ,
-            'cssmarks':parseFloat(cssm) ,
-            'phpmarks':parseFloat(phpm),
-            'javamarks':parseFloat(javam)
-        };
-        console.log(marks[cmarks])
-        function test(){
-        let total = 0;
-        for ( mark in marks) {
-            total += marks[mark];
-            console.log(total)
-          
-        }
+    
+       total =Number(cm)+Number(cppm)+Number(dbm)+Number(htmlm)+Number(cssm)+Number(phpm)+Number(javam)
         totalMarks.innerHTML= total;
         percentage.innerHTML = ((total / 350) * 100).toFixed(2) + '%';
-    }
+        }
     </script>
 </body>
 
