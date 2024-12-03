@@ -61,18 +61,21 @@
 
             <tbody>
                 <tr id="tr1">
-                    <th><img src="/React-Js-Assignments/img/img3.jpg" height="35px" width="35px" style="border-radius: 50%;"
-                            alt=""> <br>Forniture window Hardware- Decorarive Holdbacks -Mocha </th>
-                    <th><input type="number" class="inp" value="2"></th>
-                    <th>$<p class="curPrice" >29.99</p></th>
+                    <th><img src="/React-Js-Assignments/img/img3.jpg" height="35px" width="35px"
+                            style="border-radius: 50%;" alt=""> <br>Forniture window Hardware- Decorarive Holdbacks
+                        -Mocha </th>
+                    <th><input type="number" class="inp" value="2" onchange="sub()"></th>
+                    <th>$<p class="curPrice">29.99</p>
+                    </th>
                     <th>$ <b class="tprice"> 59.98</b></th>
                     <th><button id="remove" onclick="rem(tr1)">Remove</button></th>
                 </tr>
                 <tr id="tr2">
-                    <th><img src="/React-Js-Assignments/img/img2.jpg" height="35px" width="35px" style="border-radius: 50%;"
-                            alt=""> <br>Forniture window Hardware- Clip Ring - Bronze </th>
-                    <th><input type="number" class="inp" value="1"></th>
-                    <th>$<p class="curPrice">12.99</p></th>
+                    <th><img src="/React-Js-Assignments/img/img2.jpg" height="35px" width="35px"
+                            style="border-radius: 50%;" alt=""> <br>Forniture window Hardware- Clip Ring - Bronze </th>
+                    <th><input type="number" class="inp" value="1" onchange="sub()"></th>
+                    <th>$<p class="curPrice">12.99</p>
+                    </th>
                     <th>$ <b class="tprice"> 12.99</b></th>
                     <th><button id="remove" onclick="rem(tr2)">Remove</button></th>
                 </tr>
@@ -90,28 +93,32 @@
 
     </div>
     <script>
-        let remove = document.getElementById('remove')
-        let tr1 = document.getElementById('tr1')
-        let tr2 = document.getElementById('tr2')
-        var tprice=document.querySelectorAll(".tprice")
-        var inp=document.querySelectorAll(".inp")
-        var curPrice=document.querySelectorAll(".curPrice")
-        var total=document.querySelector('.total')
+        function sub(){
+            let remove = document.getElementById('remove')
+            let tr1 = document.getElementById('tr1')
+            let tr2 = document.getElementById('tr2')
+            var tprice = document.querySelectorAll(".tprice")
+            var inp = document.querySelectorAll(".inp")
+            var curPrice = document.querySelectorAll(".curPrice")
+            var total = document.querySelector('.total')
 
-        cprice=parseFloat(curPrice[0].innerHTML)
-        quntity=parseFloat(inp[0].value)
-        tprice[0].innerHTML=(quntity)* (cprice)
+            cprice = parseFloat(curPrice[0].innerHTML)
+            quntity = parseFloat(inp[0].value)
+            console.log(quntity)
+            tprice[0].innerHTML = (quntity) * (cprice)
+            console.log(tprice[0].innerHTML)
 
-        cprice=parseFloat(curPrice[1].innerHTML)
-        quntity=parseFloat(inp[1].value)
-        tprice[1].innerHTML=(quntity)* (cprice)
+            cprice = parseFloat(curPrice[1].innerHTML)
+            quntity = parseFloat(inp[1].value)
+            tprice[1].innerHTML = (quntity) * (cprice)
 
 
-        x=parseFloat(tprice[0].innerHTML)
-        y=parseFloat(tprice[1].innerHTML)
-        a=x+y
-        total.innerHTML=`${a}`
-        console.log( )
+            x = parseFloat(tprice[0].innerHTML)
+            y = parseFloat(tprice[1].innerHTML)
+            a = x + y
+            total.innerHTML = `${a}`
+            console.log()
+        }
         function rem(z) {
             z.style.display = 'none';
         }
